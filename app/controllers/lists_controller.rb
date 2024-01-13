@@ -9,6 +9,7 @@ class ListsController < ApplicationController
     @list = List.find(params[:id])
     @bookmark = Bookmark.new
     @bookmarks = Bookmark.all
+    @url = "https://image.tmdb.org/t/p/w500"
   end
 
   def new

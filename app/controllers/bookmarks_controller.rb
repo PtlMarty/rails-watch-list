@@ -5,10 +5,13 @@ class BookmarksController < ApplicationController
   end
 
   def show
-    @bookmark = Bookmark.find(params[:id])
-    @list = @bookmark.list
-    @poster_url = @bookmark.movie.poster_url
-    @url = "https://image.tmdb.org/t/p/w500" + @poster_url
+    @bookmark = Bookmark.where(:list_id => params[:id])
+
+    if @bookmark.nil?
+      redirect_to lists_path(@list), alert: 'Bookmark not found'
+    else
+      @url = "https://image.tmdb.org/t/p/w500"
+    end
   end
 
 
@@ -33,7 +36,7 @@ class BookmarksController < ApplicationController
   def destroy
     @bookmark = Bookmark.find(params[:id])
     @bookmark.destroy
-    redirect_to list_path(@bookmark.list)
+    redirect_to list_path(@bookmark.list), stauts: :see_other
   end
 
   private
