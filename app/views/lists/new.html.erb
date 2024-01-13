@@ -1,0 +1,9 @@
+<div class="container">
+  <h1>New List</h1>
+
+  <%= simple_form_for @list do |f| %>
+    <%= f.input :name %>
+    <%= f.button :submit, class:"form-control", ariaDescribedby:"basic-addon1" %>
+  <% end %>
+
+</div>
