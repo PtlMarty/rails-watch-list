@@ -1,0 +1,5 @@
+<%= simple_form_for [@list, @bookmark] do |f| %>
+  <%= f.input :comment %>
+  <%= f.collection_select :movie_id, Movie.all, :id, :title, prompt: "Select a Movie" %>
+  <%= f.submit %>
+<% end %>
