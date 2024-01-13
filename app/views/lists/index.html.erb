@@ -1,15 +1,22 @@
 <div class="container">
-  <h1>My movie list</h1>
-
-  <% @lists.each do |list| %>
-      <div class="card" style="width: 18rem;">
-        <div class="card-body">
-          <h5 class="card-title"><%= list.name %></h5>
-          <%= link_to "More ...", list_path(list.id) %>
+  <div class="banner shadow">
+    <h1>My Watching Lists</h1>
+    <p>Choose a movie, bookmark and do your movie selection</p>
+    <%= link_to "New List", new_list_path, class:"btn btn-success" %>
+  </div>
+  <div class="card-container d-flex mt-5 justify-content-evenly">
+    <% @lists.each do |list| %>
+      <div class="row ">
+        <div class="col-4">
+          <div class="card m-3 shadow-sm" style="width: 30rem;">
+            <div class="card-body">
+              <h5 class="card-title"><%= list.name %></h5>
+              <%= link_to "More ...", list_path(list.id) %>
+            </div>
+          </div>
         </div>
       </div>
-  <% end %>
-
-  <%= link_to "New List", new_list_path %>
+    <% end %>
+  </div>
 
 </div>
