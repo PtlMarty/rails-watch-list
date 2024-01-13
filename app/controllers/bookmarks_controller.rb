@@ -5,12 +5,13 @@ class BookmarksController < ApplicationController
   end
 
   def show
-    @bookmark = Bookmark.where(:list_id => params[:id])
+    @bookmark = Bookmark.find_by(id: params[:id])
 
-    if @bookmark.nil?
-      redirect_to lists_path(@list), alert: 'Bookmark not found'
+    if @bookmark
+      @list = @bookmark.list
     else
-      @url = "https://image.tmdb.org/t/p/w500"
+      flash[:alert] = 'Bookmark not found.'
+      redirect_to lists_path
     end
   end
 
