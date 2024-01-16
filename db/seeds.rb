@@ -8,8 +8,9 @@
 require 'net/http'
 require 'json'
 
+Movie.destroy_all
 url = URI("https://api.themoviedb.org/3/movie/top_rated?language=en-US&page=1")
-
+puts "Fetching movies from"
 http = Net::HTTP.new(url.host, url.port)
 http.use_ssl = true
 
