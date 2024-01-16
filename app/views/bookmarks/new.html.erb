@@ -3,3 +3,17 @@
   <%= f.collection_select :movie_id, Movie.all, :id, :title, prompt: "Select a Movie" %>
   <%= f.submit %>
 <% end %>
+
+<div class="container">
+  <% @bookmark.movie do |movie| %>
+    <div class="row">
+      <div class="col-md-4">
+        <%= image_tag movie.poster_url %>
+      </div>
+      <div class="col-md-8">
+        <h1><%= movie.title %></h1>
+        <p><%= movie.overview %></p>
+      </div>
+    </div>
+  <% end %>
+</div>
