@@ -15,7 +15,7 @@ http.use_ssl = true
 
 request = Net::HTTP::Get.new(url)
 request["accept"] = 'application/json'
-request["Authorization"] = 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIyNTc3NWNlN2RhMDRjOThiNTczZWVkNTg2NjFkOTRmNiIsInN1YiI6IjY1YTFmYzZjZDAzNmI2MDEzMjZhMjExZCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.t4qRFmFDds1OrPzaSNTcjzhBTZgo9A1Y5j1Vka5Z6io'
+request["Authorization"] = IMAGE_API_KEY
 
 response = http.request(request)
 
