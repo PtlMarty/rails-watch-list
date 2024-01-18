@@ -7,7 +7,8 @@
 #   Character.create(name: "Luke", movie: movies.first)
 require 'net/http'
 require 'json'
-
+require 'dotenv'
+puts "Cleaning database..."
 Movie.destroy_all
 url = URI("https://api.themoviedb.org/3/movie/top_rated?language=en-US&page=1")
 puts "Fetching movies from"
@@ -16,7 +17,7 @@ http.use_ssl = true
 
 request = Net::HTTP::Get.new(url)
 request["accept"] = 'application/json'
-request["Authorization"] = IMAGE_API_KEY
+request["Authorization"] = ENV['IMAGE_API_KEY']
 
 response = http.request(request)
 
@@ -40,3 +41,4 @@ if response.code == '200'
 else
   puts "Error: #{response.code} - #{response.message}"
 end
+puts "Created #{Movie.count} movies"
