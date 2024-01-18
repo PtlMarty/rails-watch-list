@@ -28,10 +28,9 @@ class ListsController < ApplicationController
   end
 
   def destroy
-
     @list = List.find(params[:id])
     @list.destroy
-    redirect_to root_path, status: :see_other
+    redirect_to root_path, status: :see_other, notice: 'List was successfully destroyed.'
   end
 
 
