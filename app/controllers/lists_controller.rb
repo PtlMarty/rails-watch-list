@@ -2,7 +2,7 @@ class ListsController < ApplicationController
 
   def index
     @lists = List.all
-    @list = List.new
+    @movies = Movie.all
   end
 
   def show
@@ -14,6 +14,8 @@ class ListsController < ApplicationController
 
   def new
     @list = List.new
+    @movies = Movie.all
+    @url = "https://image.tmdb.org/t/p/w500"
   end
 
   def create
@@ -37,7 +39,7 @@ class ListsController < ApplicationController
   private
 
   def list_params
-    params.require(:list).permit(:name)
+    params.require(:list).permit(:name, :photo)
   end
 
 end

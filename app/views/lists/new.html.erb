@@ -3,6 +3,7 @@
 
   <%= simple_form_for @list do |f| %>
     <%= f.input :name %>
+    <%= f.input :photo, as: :file %>
     <%= f.button :submit, class:"form-control", ariaDescribedby:"basic-addon1" %>
   <% end %>
 

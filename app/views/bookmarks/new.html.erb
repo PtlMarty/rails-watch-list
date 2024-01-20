@@ -1,19 +1,25 @@
 <%= simple_form_for [@list, @bookmark] do |f| %>
   <%= f.input :comment %>
-  <%= f.collection_select :movie_id, Movie.all, :id, :title, prompt: "Select a Movie" %>
+  <%= f.select :movie_id, @movies.map { |m| [m.title, m.id] } %>
   <%= f.submit %>
-<% end %>
 
-<div class="container">
-  <% @bookmark.movie do |movie| %>
-    <div class="row">
-      <div class="col-md-4">
-        <%= image_tag movie.poster_url %>
+  <div class="container mt-4">
+    <% @movies.each_slice(4) do |movies| %>
+      <div class="row">
+        <% movies.each do |movie| %>
+          <%= f.fields_for :bookmarks do |bookmark_fields| %>
+            <label class="card col-md-3 mb-3">
+              <%= image_tag "https://image.tmdb.org/t/p/w500#{movie.poster_url}", class: "card-img-top" %>
+              <div class="card-body">
+                <h5 class="card-title"><%= movie.title %></h5>
+                <p class="card-text"><%= movie.overview %></p>
+              </div>
+              <div class="card-footer">
+              </div>
+            </label>
+          <% end %>
+        <% end %>
       </div>
-      <div class="col-md-8">
-        <h1><%= movie.title %></h1>
-        <p><%= movie.overview %></p>
-      </div>
-    </div>
-  <% end %>
-</div>
+    <% end %>
+  </div>
+<% end %>

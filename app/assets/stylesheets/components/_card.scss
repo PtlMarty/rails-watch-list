@@ -1,9 +1,6 @@
 .card-container{
   .card{
-    background-image:url("https://i.pickadummy.com/300x150?greyscale=yes");
-    background-size: cover;
-    background-position: center;
-    &:hover{
+    :hover{
       transition: 2ms;
       transform: scale(0.99);
     }
